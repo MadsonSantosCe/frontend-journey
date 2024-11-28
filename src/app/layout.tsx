@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-
-export const metadata: Metadata = {
-  title: "frontend-journey",
-};
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -32,7 +31,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Provider store={store}>{children}</Provider>
         </ThemeProvider>
       </body>
     </html>
